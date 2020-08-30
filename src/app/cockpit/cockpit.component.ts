@@ -13,8 +13,12 @@ export class CockpitComponent implements OnInit {
    * 
    * We use the @Output() decorator to make a property able to be listened to from outside.
    */
+  /**
+   * You can assign an alias to @Output() if you want the parent component to refer to the event by a different
+   * name.
+   */
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
-  @Output() blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+  @Output('bpCreated') blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
   newServerName = '';
   newServerContent = '';
 
@@ -37,6 +41,6 @@ export class CockpitComponent implements OnInit {
     this.blueprintCreated.emit({
       serverName: this.newServerName,
       serverContent: this.newServerContent
-    })
+    });
   }
 }
