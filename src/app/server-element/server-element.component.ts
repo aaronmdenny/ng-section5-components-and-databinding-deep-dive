@@ -1,5 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 
+/**
+ * We can use the "encapsulation" property on the @Component() decorator to override Angular's
+ * default view encapsulation:
+ * 
+ *  encapsulation: ViewEncapsulation.None
+ * 
+ * ViewEncapsulation.None removes the Angular-generated attributes that allow view encapsulation to
+ * occur. With this option, the component will not use view encapsulation, but the others still may.
+ * 
+ * If you apply styles to the CSS file in this component, the styles will be applied globally.
+ * 
+ * ViewEncapsulation.Native uses the shadow DOM technology. This should give you the same result as
+ * ViewEncapsulation.Emulated (the default option), but only in browsers that support shadow DOM
+ * technology.
+ */
 @Component({
   selector: 'app-server-element',
   templateUrl: './server-element.component.html',
