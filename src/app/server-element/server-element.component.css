@@ -1,0 +1,19 @@
+/*
+    Angular will add an attribute to paragraph elements of a component so they can be distinguished from
+    paragraph elements in another component.
+
+    For example, for paragraph elements of the server-element-component, we may see the following:
+    <p _ngcontent-ejo-2>
+        ...
+    </p>
+
+    CSS:
+    p[_ngcontent-ejo-2] {
+        color: blue;
+    }
+
+    All elements of the server-element-component will have this attribute added to them by Angular.
+*/
+p {
+    color: blue;
+}

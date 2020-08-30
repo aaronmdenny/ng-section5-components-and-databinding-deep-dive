@@ -2,6 +2,12 @@
   margin-top: 30px;
 }
 
+/*
+  Angular imposes that CSS rules you write will only apply to the component in which they are intended for.
+
+  Therefore, we lose the blue styling on paragraph elements because we moved the paragraphs into other
+  components.
+*/
 p {
   color: blue;
 }
