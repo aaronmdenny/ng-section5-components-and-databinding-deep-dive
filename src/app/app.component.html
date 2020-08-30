@@ -9,7 +9,14 @@
   individual components.
 -->
 <div class="container">
-  <app-cockpit></app-cockpit>
+  <!--
+    We can pass data from child component to parent component with event binding. The "cockpit" component
+    passes event data to the "app" component (this component) via the "serverCreated" event. You can have
+    multiple events from a child component.
+  -->
+  <app-cockpit
+    (serverCreated)="onServerAdded($event)"
+    (blueprintCreated)="onBlueprintAdded($event)"></app-cockpit>
   <hr>
   <div class="row">
     <div class="col-xs-12">
