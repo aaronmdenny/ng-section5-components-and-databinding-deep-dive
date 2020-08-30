@@ -14,6 +14,11 @@
     passes event data to the "app" component (this component) via the "serverCreated" event. You can have
     multiple events from a child component.
   -->
+  <!--
+    There are some use cases where the distance between the components that should communicate is large,
+    or where the path from one component to another is awkward. We use services to deal with this
+    (see section 9).
+  -->
   <app-cockpit
     (serverCreated)="onServerAdded($event)"
     (bpCreated)="onBlueprintAdded($event)"></app-cockpit>
