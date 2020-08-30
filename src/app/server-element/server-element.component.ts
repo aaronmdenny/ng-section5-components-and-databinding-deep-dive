@@ -12,10 +12,20 @@ export class ServerElementComponent implements OnInit {
    * By default, all properties of components are only accessible inside of their components, not from
    * outside.
    * 
-   * If you want to allow parent components to be able to bind to a property, you must add the @Input
-   * decorator
+   * If you want to allow parent components to be able to bind to a property, you must add the @Input()
+   * decorator.
    */
-  @Input() element: {
+   /**
+    * Sometimes, you don't want to use the same property name outside of the component as you do inside 
+    * of it.
+    * 
+    * Inside (here), we may want to use the name "element", but we may want to expose the property to
+    * other components using a different name.
+    * 
+    * You can pass an alias argument to @Input(). From the outside, this will be how the element is
+    * accessed.
+    */
+  @Input('srvElement') element: {
     type: string,
     name: string,
     content: string
