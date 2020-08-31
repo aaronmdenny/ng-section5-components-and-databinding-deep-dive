@@ -2,18 +2,30 @@
     <div class="col-xs-12">
       <p>Add new Servers or blueprints!</p>
       <label>Server Name</label>
-      <input type="text" class="form-control" [(ngModel)]="newServerName">
+      <!--
+          A local reference can be placed on any HTML element using the syntax: #<nameOfReference>.
+          With this, you can reference the whole element and its properties.
+      -->
+      <input 
+        type="text"
+        class="form-control"
+        #serverNameInput>
       <label>Server Content</label>
       <input type="text" class="form-control" [(ngModel)]="newServerContent">
       <br>
       <div div class="btn-toolbar">
+        <!--
+            You can use references anywhere in the template, but not anywhere in the TypeScript coded.
+
+            You can even use it as the text to a "paragraph" element:
+            <p>serverNameInput.value</p>
+        -->
         <button
         class="btn btn-primary"
-        (click)="onAddServer()">Add Server</button>
+        (click)="onAddServer(serverNameInput)">Add Server</button>
       <button
         class="btn btn-primary"
-        (click)="onAddBlueprint()">Add Server Blueprint</button>
+        (click)="onAddBlueprint(serverNameInput)">Add Server Blueprint</button>
       </div>
     </div>
   </div>
-  

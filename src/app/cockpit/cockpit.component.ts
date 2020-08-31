@@ -19,7 +19,7 @@ export class CockpitComponent implements OnInit {
    */
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
   @Output('bpCreated') blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
-  newServerName = '';
+  // newServerName = '';
   newServerContent = '';
 
   constructor() { }
@@ -30,16 +30,28 @@ export class CockpitComponent implements OnInit {
   /**
    * We call emit() on the EventEmitter to emit the event when onAddServer() is called in the template.
    */
-  onAddServer() {
+  onAddServer(nameInput: HTMLInputElement) {
+    /**
+     * With this, we will log the input element itself:
+     * 
+     * <input _ngcontent-onk-1 class="form-control" type="text">
+     */
+    console.log(nameInput);
+
+    /**
+     * Since we know an input element has a "value" property, we can log this as well:
+     */
+    console.log(nameInput.value);
+
     this.serverCreated.emit({
-      serverName: this.newServerName,
+      serverName: nameInput.value,
       serverContent: this.newServerContent
     });
   }
 
-  onAddBlueprint() {
+  onAddBlueprint(nameInput: HTMLInputElement) {
     this.blueprintCreated.emit({
-      serverName: this.newServerName,
+      serverName: nameInput.value,
       serverContent: this.newServerContent
     });
   }

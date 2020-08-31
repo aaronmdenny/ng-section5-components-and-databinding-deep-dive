@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 /**
  * We can use the "encapsulation" property on the @Component() decorator to override Angular's
