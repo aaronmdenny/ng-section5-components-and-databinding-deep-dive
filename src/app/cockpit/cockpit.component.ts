@@ -42,6 +42,40 @@ export class CockpitComponent implements OnInit {
 
   constructor() { }
 
+  /**
+   * ngOnInit() is a lifecycle hook. If a new component is created in Angular, Angular goes through some phases in the 
+   * component creation process. It gives us a chance to hook into these phases and execute some code. We hook into 
+   * these phases by implementing some methods that Angular will call if those methods are present.
+   * 
+   * 1. ngOnChanges: This may be executed multiple times. It is executed at the start when a new component is created, 
+   *    and thereafter is called whenever a bound input property changes (properties decorated with @Input()).
+   * 
+   * 2. ngOnInit: Called when the component is initialized (the object is created - not when the component is displayed
+   *    in the DOM). It is called after the constructor.
+   * 
+   * 3. ngDoCheck: Called during every change detection run. Change detection is the system by which Angular determines 
+   *    whether something changed inside of a component and something in the template must be updated to reflect the 
+   *    change. Some property may have changed from 1 to 2, for example. This method is run on every check that Angular 
+   *    makes, regardless of whether a change happened. So, ngDoCheck will run because, say, you click on a button, 
+   *    which doesn't change anything, but is still an event and Angular must check if something changed on every event.
+   *    There are certain triggering events, such as when you click on somewhere, or a timer fires, or an Observable is 
+   *    resolved. On these occasions, the code you write in ngDoCheck will be executed. You can use ngDoCheck to inform 
+   *    Angular about some change it would not be able to otherwise detect.
+   * 
+   * 4. ngAfterContentInit: Called after content (ng-content) has been projected into view. See the previous commit for 
+   *    information about ng-content.
+   * 
+   * 5. ngAfterContentChecked: Called every time the projected content that goes in ng-content has been checked by 
+   *    change detection. See the previous commit for information about ng-content.
+   * 
+   * 6. ngAfterViewInit: Called after the component's view (and child views) have been initialized (the view is 
+   *    rendered).
+   * 
+   * 7. ngAfterViewChecked: Called every time the view (and child views) have been checked by change detection.
+   * 
+   * 8. ngOnDestroy: Called when the component is about to be destroyed. This can happen, for example, if you place an 
+   *    *ngIf directive on the component and it evaluates to false.
+   */
   ngOnInit(): void {
   }
 
