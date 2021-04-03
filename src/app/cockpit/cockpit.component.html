@@ -3,15 +3,24 @@
       <p>Add new Servers or blueprints!</p>
       <label>Server Name</label>
       <!--
-          A local reference can be placed on any HTML element using the syntax: #<nameOfReference>.
-          With this, you can reference the whole element and its properties.
+        A local reference can be placed on any HTML element using the syntax: #<nameOfReference>. With this, you can
+        reference the whole element and its properties. This is an alternative to using two-way databinding via 
+        [(ngModel)] on this input element. No property in the component class is needed when we use the local reference.
+        We can simply pass the reference to a function in the component class as we do in onAddServer().
       -->
       <input 
         type="text"
         class="form-control"
         #serverNameInput>
       <label>Server Content</label>
-      <input type="text" class="form-control" [(ngModel)]="newServerContent">
+      <!--
+        a
+      -->
+      <input
+        type="text"
+        class="form-control"
+        #serverContentInput
+        [(ngModel)]="newServerContent">
       <br>
       <div div class="btn-toolbar">
         <!--
