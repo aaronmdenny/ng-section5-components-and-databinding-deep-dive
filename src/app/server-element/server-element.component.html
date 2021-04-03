@@ -5,9 +5,22 @@
     class="panel panel-default">
     <div class="panel-heading">{{ element.name }}</div>
     <div class="panel-body">
-        <p>
-            <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
-            <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
-        </p>
+        <!--
+          ng-content is a directive (that uses the element-style selector) which we can use to mark in our component the
+          place for Angular to add any content that it finds between the opening and closing tags of the component when 
+          we use the component in the component parent. So, this component (ServerElementComponent) would be used in a 
+          parent like this:
+
+          <app-server-element>
+            ... some content
+          </app-server-element>
+
+          and the content would appear where we have put <ng-content></ng-content> below.
+
+          This can be useful if you are making re-usable widgets, like a tab widget, where each tab would have some 
+          content that would come from some other source, and which you would not pass through property binding because 
+          it would be complex HTML code.
+        -->
+        <ng-content></ng-content>
     </div>
 </div>
