@@ -25,6 +25,18 @@
   <hr>
   <div class="row">
     <div class="col-xs-12">
+      <div div class="btn-toolbar">
+        <button
+          class="btn btn-primary"
+          (click)="onChangeFirstElement()">
+          Change first Element
+        </button>
+        <button
+          class="btn btn-danger"
+          (click)="onRemoveFirstElement()">
+          Destroy first Element
+        </button>
+      </div>
       <!--
         We use property binding to assign the current "serverElement" to the "element" property in the
         "server-element" component.
@@ -33,7 +45,8 @@
       -->
       <app-server-element
         *ngFor="let serverElement of serverElements"
-        [srvElement]="serverElement">
+        [srvElement]="serverElement"
+        [name]="serverElement.name">
         <p>
           <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
           <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>

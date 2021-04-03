@@ -32,4 +32,12 @@ export class AppComponent {
       content: blueprintData.serverContent
     });
   }
+
+  onChangeFirstElement() {
+    this.serverElements[0].name = 'Changed!';
+  }
+
+  onRemoveFirstElement() {
+    this.serverElements.splice(0, 1);
+  }
 }
