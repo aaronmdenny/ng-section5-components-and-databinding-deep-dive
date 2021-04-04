@@ -11,7 +11,8 @@ import {
   AfterViewChecked,
   OnDestroy,
   ViewChild,
-  ElementRef
+  ElementRef,
+  ContentChild
 } from '@angular/core';
 
 /**
@@ -71,7 +72,11 @@ export class ServerElementComponent implements
   @Input() name: string;
 
   // static is set to true because we use 'header' in ngOnInit().
-  @ViewChild('heading', {static: true}) header: ElementRef;
+  @ViewChild('heading', { static: true }) header: ElementRef;
+
+  // You cannot get this value until the AfterContentInit() lifecycle hook is reached. The value of 'static' is set to 
+  // true to make sure 'paragraph' is defined in ngOnInit().
+  @ContentChild('contentParagraph', { static: true }) paragraph: ElementRef;
 
   constructor() {
     console.log('Constructor called');
@@ -99,6 +104,11 @@ export class ServerElementComponent implements
   // Called after the content from the parent is projected into <ng-content></ng-content>. Only called one time.
   ngAfterContentInit(): void {
     console.log('ngAfterContentInit() called');
+
+    // Used to access local reference #paragraphContent in the parent that is projected into this component.
+    console.log(
+      `Text content of #contentParagraph in ngAfterContentInit(): ${this.paragraph.nativeElement.textContent}`
+    );
   }
 
   // Executd on every change detection run.
@@ -132,6 +142,9 @@ export class ServerElementComponent implements
     // textContent is available inside of a <div> element.
     // This will not work because textContent is not available yet. See ngAfterViewInit().
     console.log(`Text content of #header in ngOnInit(): ${this.header.nativeElement.textContent}`);
+
+    // This will not work because textContent is not available yet. See ngAfterContentInit().
+    console.log(`Text content of #contentParagraph in ngOnInit(): ${this.paragraph.nativeElement.textContent}`);
   }
 
 }

@@ -47,7 +47,13 @@
         *ngFor="let serverElement of serverElements"
         [srvElement]="serverElement"
         [name]="serverElement.name">
-        <p>
+        <!--
+          The content in the <p> element is projected inside of the app-server-element. So how do we access the local 
+          reference to the paragraph element from inside of the app-server-element?
+
+          @ViewChild() will not work because it is not part of the view. So, use @ContentChild().
+        -->
+        <p #contentParagraph>
           <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
           <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
         </p>
