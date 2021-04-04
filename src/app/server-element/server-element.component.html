@@ -3,7 +3,11 @@
 -->
 <div
     class="panel panel-default">
-    <div class="panel-heading">{{ name }}</div>
+    <div
+      class="panel-heading"
+      #heading>
+      {{ name }}
+    </div>
     <div class="panel-body">
         <!--
           ng-content is a directive (that uses the element-style selector) which we can use to mark in our component the

@@ -9,7 +9,9 @@ import {
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
-  OnDestroy
+  OnDestroy,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 
 /**
@@ -68,6 +70,9 @@ export class ServerElementComponent implements
 
   @Input() name: string;
 
+  // static is set to true because we use 'header' in ngOnInit().
+  @ViewChild('heading', {static: true}) header: ElementRef;
+
   constructor() {
     console.log('Constructor called');
   }
@@ -86,6 +91,9 @@ export class ServerElementComponent implements
 
   ngAfterViewInit(): void {
     console.log('ngAfterViewInit() called');
+    // The text content of the div referenced by #header is only available upon when this lifecycle hook is executed. So
+    // the textContent of the <div> is not available in ngOnInit(), but is available here.
+    console.log(`Text content of #header in ngAfterViewInit(): ${this.header.nativeElement.textContent}`);
   }
 
   // Called after the content from the parent is projected into <ng-content></ng-content>. Only called one time.
@@ -120,6 +128,10 @@ export class ServerElementComponent implements
 
   ngOnInit(): void {
     console.log('ngOnInit() called');
+
+    // textContent is available inside of a <div> element.
+    // This will not work because textContent is not available yet. See ngAfterViewInit().
+    console.log(`Text content of #header in ngOnInit(): ${this.header.nativeElement.textContent}`);
   }
 
 }
